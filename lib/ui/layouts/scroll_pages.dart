@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:titanes_page/providers/page_privider.dart';
-import 'package:titanes_page/ui/views/about.dart';
-import 'package:titanes_page/ui/views/contact_page.dart';
-import 'package:titanes_page/ui/views/integrantes.dart';
-import 'package:titanes_page/ui/views/photos_page.dart';
+import 'package:titanes_page/ui/shared/custom_app_menu.dart';
+import 'package:titanes_page/ui/shared/logo.dart';
+import 'package:titanes_page/ui/views/views.dart';
 
 class ScrollPages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(
-      children: [_ScrollPages()],
+      children: [
+        _ScrollPages(),
+        Positioned(top: 15, right: 10, child: CustomAppMenu()),
+        Positioned(top: 15, left: 15, child: Logo())
+      ],
     ));
   }
 }

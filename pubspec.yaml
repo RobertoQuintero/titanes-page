@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  animate_do: ^2.0.0
   carousel_slider: ^4.0.0
   cupertino_icons: ^1.0.2
   fluro: ^2.0.3
@@ -71,7 +72,6 @@ flutter:
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
-
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

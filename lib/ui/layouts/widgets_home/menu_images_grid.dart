@@ -80,11 +80,16 @@ class _ImageItemState extends State<ImageItem> {
     final hoveredTransform = Matrix4.identity()..scale(1.15);
     final transform = _isHover ? hoveredTransform : Matrix4.identity();
     final size = MediaQuery.of(context).size;
-    final width = size.width < 490
+    final double small = 450;
+    final double large = 990;
+    final width = size.width < small
         ? size.width
-        : size.width < 990
+        : size.width < large
             ? size.width / 2
             : size.width / 4;
+    final height =
+        size.width < size.height ? size.height * .2 : size.height * .3;
+
     return InkWell(
       onHover: (value) => setState(() => _isHover = value),
       onTap: () => Navigator.pushNamed(context, widget.route),
@@ -92,7 +97,7 @@ class _ImageItemState extends State<ImageItem> {
         children: [
           Container(
             width: width,
-            height: size.height * .3,
+            height: height,
             child: Hero(
               tag: widget.image,
               child: Image.network(
@@ -105,7 +110,7 @@ class _ImageItemState extends State<ImageItem> {
             duration: Duration(milliseconds: 200),
             width: width,
             transform: transform,
-            height: size.height * .3,
+            height: height,
             color: _isHover ? Colors.black26 : Colors.black38,
             alignment: Alignment.center,
             child: Text(

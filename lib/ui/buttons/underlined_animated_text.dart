@@ -31,7 +31,7 @@ class _UnderlinedAnimatedTextState extends State<UnderlinedAnimatedText> {
           bottom: -2,
           child: AnimatedContainer(
             duration: Duration(milliseconds: 200),
-            width: _isHover ? 100 : 0,
+            width: _isHover ? 119 : 0,
             height: 2,
             color: widget.color,
           ),

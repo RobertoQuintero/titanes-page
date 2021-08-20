@@ -31,8 +31,8 @@ class _SliderImagesState extends State<SliderImages> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final double padding = size.width < 639 ? 15 : size.width * .1;
-    final double fontSize = size.width > 639 ? 25 : 0;
+    final double padding = size.width < 650 ? 15 : size.width * .05;
+    final double fontSize = size.width > 650 ? 25 : 0;
     final fontLarge = 40;
     final fontMedium = 30;
 
@@ -46,7 +46,7 @@ class _SliderImagesState extends State<SliderImages> {
           bottom: padding,
           child: Container(
               alignment: Alignment.centerLeft,
-              constraints: BoxConstraints(maxWidth: size.width * .6),
+              constraints: BoxConstraints(maxWidth: size.width * .7),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -85,9 +85,20 @@ class FullscreenSliderDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
+    final double medium = 769;
+    final double height = size.width < medium
+        ? size.width < 450
+            ? size.height * .8
+            : size.width < size.height
+                ? size.height * .6
+                : size.height * .7
+        : size.width < size.height
+            ? size.height * .7
+            : size.height * .6;
     return CarouselSlider(
       options: CarouselOptions(
-        height: size.height > 990 ? size.height * .7 : size.height * .6,
+        height: height,
         viewportFraction: 1.0,
         enlargeCenterPage: false,
         autoPlay: true,
@@ -100,7 +111,7 @@ class FullscreenSliderDemo extends StatelessWidget {
                     child: Image.network(
                   item,
                   fit: BoxFit.cover,
-                  height: size.height * 8,
+                  height: height,
                   width: size.width,
                 )),
               ))
