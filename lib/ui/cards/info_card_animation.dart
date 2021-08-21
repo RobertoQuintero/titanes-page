@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
 class InfoCardAnimation extends StatefulWidget {
-  const InfoCardAnimation({Key? key}) : super(key: key);
+  final String name;
+  final String instrument;
+  final String image;
+  const InfoCardAnimation(
+      {Key? key,
+      required this.name,
+      required this.instrument,
+      required this.image})
+      : super(key: key);
 
   @override
   _InfoCardAnimationState createState() => _InfoCardAnimationState();
@@ -9,90 +17,71 @@ class InfoCardAnimation extends StatefulWidget {
 
 class _InfoCardAnimationState extends State<InfoCardAnimation> {
   bool isHover = false;
-  final double width = 300;
+  final double width = 250;
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
       hoverColor: Colors.transparent,
-      onTap: () {},
-      onHover: (value) {
-        if (value) {
-          isHover = true;
-        } else {
-          isHover = false;
-        }
-        setState(() {});
-      },
-      child: Container(
+      onTap: () => setState(() => isHover = !isHover),
+      onHover: (value) => setState(() => isHover = value),
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 300),
         width: width,
         height: width,
+        margin: EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
-            // color: Colors.white,
+            color: isHover ? Colors.black : Colors.white,
             borderRadius: BorderRadius.circular(25),
-            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 15)]),
+            boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 20)]),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(25),
           child: Stack(
-            // clipBehavior: Clip.none,
             children: [
-              Container(
-                padding: EdgeInsets.all(15),
-                color: Colors.white,
-                child: AnimatedOpacity(
-                  duration: Duration(milliseconds: 500),
-                  opacity: isHover ? 0 : 1,
-                  child: Column(
-                    children: [
-                      Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100)),
-                          child: Image.asset(
-                            '/images/logo.jpg',
-                            fit: BoxFit.cover,
-                          )),
-                      Text(
-                        'ROberto carlor',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      Text(
-                        'In tempor et consectetur est anim irure esse ex ea.',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AnimatedOpacity(
+                    opacity: isHover ? 0.85 : 1,
+                    duration: Duration(milliseconds: 200),
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 200),
+                      width: isHover ? width : width * .7,
+                      height: isHover ? width : width * .7,
+                      margin: EdgeInsets.only(top: isHover ? 0 : 15),
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(isHover ? 0 : width),
+                          image: DecorationImage(
+                              scale: 1.1,
+                              fit: BoxFit.cover,
+                              image: AssetImage(widget.image))),
+                    ),
                   ),
+                ],
+              ),
+              Positioned(
+                bottom: 25,
+                left: 15,
+                child: Text(
+                  widget.name,
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'MontserratAlternates',
+                      fontWeight: FontWeight.bold,
+                      color: isHover ? Colors.white : Colors.black),
                 ),
               ),
-              AnimatedPositioned(
-                top: isHover ? -width * .5 : -width * 2,
-                left: isHover ? -width * .5 : -width * 2,
-                duration: Duration(milliseconds: 300),
-                child: Container(
-                  height: width * 2,
-                  width: width * 2,
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(width)),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(15),
-                child: AnimatedOpacity(
-                  duration: Duration(milliseconds: 500),
-                  opacity: isHover ? 1 : 0,
-                  child: Column(
-                    children: [
-                      Text(
-                        'ROberto carlor',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                      ),
-                      Text(
-                        'Consectetur nulla velit eiusmod ea qui sunt id do ullamco aute pariatur elit. Tempor dolore nostrud et ex cupidatat ullamco sunt dolore cupidatat. Officia qui qui irure irure.',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                    ],
-                  ),
+              Positioned(
+                bottom: 10,
+                left: 15,
+                child: Text(
+                  widget.instrument,
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'MontserratAlternates',
+                      color: isHover ? Colors.white : Colors.black),
                 ),
               ),
             ],

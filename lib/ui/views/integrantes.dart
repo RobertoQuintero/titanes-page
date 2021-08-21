@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:titanes_page/ui/labels/title_label.dart';
+import 'package:titanes_page/ui/cards/info_card_animation.dart';
+// import 'package:titanes_page/ui/labels/title_label.dart';
 import 'package:titanes_page/ui/layouts/custom_full_page.dart';
 
 class TeamPage extends StatelessWidget {
@@ -45,6 +46,86 @@ class _WidgetDescription extends StatelessWidget {
       //     ),
       //   ],
       // ),
+    );
+  }
+}
+
+final List<Map<String, String>> integrantes = [
+  {
+    'name': 'Jair Lara',
+    'instrument': 'Conga',
+    'image': 'assets/images/titanes4.jpg'
+  },
+  {
+    'name': 'Edy Palacios',
+    'instrument': 'Teclado',
+    'image': 'assets/images/titanes6.jpg'
+  },
+  {
+    'name': 'Moi González',
+    'instrument': 'Trompeta',
+    'image': 'assets/images/moi.jpg'
+  },
+  {
+    'name': 'Alexis Macías',
+    'instrument': 'Trombón',
+    'image': 'assets/images/alexis.jpg'
+  },
+  {
+    'name': 'Ángel Medina',
+    'instrument': 'Saxofón',
+    'image': 'assets/images/marvan.jpg'
+  },
+  {
+    'name': 'Luis Galván',
+    'instrument': 'Vocalista',
+    'image': 'assets/images/luis.jpg'
+  },
+  {
+    'name': 'Yonathan Akira',
+    'instrument': 'Batería',
+    'image': 'assets/images/titanes5.jpg'
+  },
+  {
+    'name': 'Roberto Quintero',
+    'instrument': 'Bajo',
+    'image': 'assets/images/roberto.jpeg'
+  },
+];
+
+class InfoPage extends StatelessWidget {
+  const InfoPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Scaffold(
+      // backgroundColor: Colors.grey[200],
+      body: Container(
+        width: size.width,
+        height: size.height,
+        alignment: Alignment.center,
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            margin: EdgeInsets.symmetric(vertical: 30),
+            child: Wrap(
+              spacing: 15,
+              runSpacing: 15,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              alignment: WrapAlignment.center,
+              children: [
+                ...integrantes
+                    .map((e) => InfoCardAnimation(
+                        name: e['name']!,
+                        instrument: e['instrument']!,
+                        image: e['image']!))
+                    .toList()
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

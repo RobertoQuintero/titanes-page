@@ -1,6 +1,6 @@
 // https://images.unsplash.com/photo-1592169813474-dd0c8e52e3bf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:js' as js;
+// import 'dart:js' as js;
 
 import 'dart:math';
 
@@ -75,8 +75,8 @@ class _WidgetDescription extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
                 onPressed: () {
-                  js.context
-                      .callMethod('open', ['https://wa.me/5217825284208']);
+                  // js.context
+                  //     .callMethod('open', ['https://wa.me/5217825284208']);
                 },
                 child: Row(
                   children: [
