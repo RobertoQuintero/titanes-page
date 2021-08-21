@@ -11,22 +11,16 @@ class Flurorouter {
   static String contactRoute = '/contacto';
 
   static void configureRoutes() {
-    router.define(rootRoute,
-        handler: HandlerRouter.home, transitionType: TransitionType.fadeIn);
+    router.define(
+      rootRoute,
+      handler: HandlerRouter.home,
+      transitionType: TransitionType.fadeIn,
+    );
 
     router.define('/:page',
         handler: HandlerRouter.scrollHandler,
-        transitionType: TransitionType.fadeIn);
-
-    // router.define(aboutRoute,
-    //     handler: HandlerRouter.about, transitionType: TransitionType.fadeIn);
-
-    // router.define(teamRoute,
-    //     handler: HandlerRouter.team, transitionType: TransitionType.fadeIn);
-    // router.define(photosRoute,
-    //     handler: HandlerRouter.photo, transitionType: TransitionType.fadeIn);
-    // router.define(contactRoute,
-    //     handler: HandlerRouter.contact, transitionType: TransitionType.fadeIn);
+        transitionType: TransitionType.fadeIn,
+        transitionDuration: Duration(milliseconds: 300));
 
     router.notFoundHandler = HandlerRouter.home;
   }

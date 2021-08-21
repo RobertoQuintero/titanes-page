@@ -87,8 +87,11 @@ class _ImageItemState extends State<ImageItem> {
         : size.width < large
             ? size.width / 2
             : size.width / 4;
-    final height =
-        size.width < size.height ? size.height * .2 : size.height * .3;
+    final height = size.width < size.height
+        ? size.width < 990
+            ? size.height * .3
+            : size.height * .2
+        : size.height * .3;
 
     return InkWell(
       onHover: (value) => setState(() => _isHover = value),

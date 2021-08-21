@@ -1,4 +1,6 @@
 // https://images.unsplash.com/photo-1592169813474-dd0c8e52e3bf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:js' as js;
 
 import 'dart:math';
 
@@ -27,12 +29,13 @@ class ContactPage extends StatelessWidget {
 }
 
 final List<Map<String, dynamic>> contactData = [
-  {'text': '782 528 4208', 'icon': MaterialCommunityIcons.whatsapp},
+  {'text': '782 528 4208', 'icon': MaterialCommunityIcons.phone},
   {'text': '782 220 9710', 'icon': MaterialCommunityIcons.phone},
   {'text': 'Titanes Band', 'icon': MaterialCommunityIcons.facebook},
   {'text': 'Titanes Band', 'icon': MaterialCommunityIcons.instagram},
   {'text': 'Titanes Band', 'icon': MaterialCommunityIcons.youtube},
   {'text': '@titanesBand', 'icon': MaterialCommunityIcons.twitter},
+  {'text': 'titanesbandpr@gmail.com', 'icon': MaterialCommunityIcons.gmail},
 ];
 
 class _WidgetDescription extends StatelessWidget {
@@ -65,7 +68,25 @@ class _WidgetDescription extends StatelessWidget {
                         )
                       ],
                     ))
-                .toList()
+                .toList(),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Color(0xff2E802A),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
+                onPressed: () {
+                  js.context
+                      .callMethod('open', ['https://wa.me/5217825284208']);
+                },
+                child: Row(
+                  children: [
+                    Icon(MaterialCommunityIcons.whatsapp),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text('Whatsapp')
+                  ],
+                ))
           ],
         ),
         _ImagesStack()
@@ -152,11 +173,12 @@ class ContactItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final double fontSize = size.width < 768 ? 25 : 35;
+    final double fontSize = size.width < 769 ? 25 : 35;
+    final Color color = size.width < 769 ? Colors.black : Colors.white;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(icon, color: Colors.white, size: fontSize),
+        Icon(icon, color: color, size: fontSize),
         SizedBox(
           width: 10,
         ),
@@ -164,8 +186,8 @@ class ContactItem extends StatelessWidget {
           text,
           style: TextStyle(
               fontSize: fontSize - 15,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+              color: color,
+              fontWeight: FontWeight.normal,
               fontFamily: 'Poppins'),
         )
       ],

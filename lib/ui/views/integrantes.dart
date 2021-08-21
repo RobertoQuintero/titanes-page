@@ -30,18 +30,21 @@ class _WidgetDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TitleLabel(text: 'Integrantes'),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          'Quis aute irure laborum tempor laborum nisi nulla nulla nisi.',
-          style: TextStyle(fontSize: 30, color: Colors.white),
-        ),
-      ],
+    return Container(
+      color: Colors.white,
+      // child: Column(
+      //   crossAxisAlignment: CrossAxisAlignment.start,
+      //   children: [
+      //     TitleLabel(text: 'Integrantes'),
+      //     SizedBox(
+      //       height: 10,
+      //     ),
+      //     Text(
+      //       'Quis aute irure laborum tempor laborum nisi nulla nulla nisi.',
+      //       style: TextStyle(fontSize: 30, color: Colors.white),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

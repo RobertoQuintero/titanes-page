@@ -86,16 +86,13 @@ class FullscreenSliderDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    final double medium = 769;
-    final double height = size.width < medium
-        ? size.width < 450
-            ? size.height * .8
-            : size.width < size.height
-                ? size.height * .6
-                : size.height * .7
-        : size.width < size.height
+    final double height = size.width < 450
+        ? size.height
+        : size.width < 990
             ? size.height * .7
-            : size.height * .6;
+            : size.width < size.height
+                ? size.height * .7
+                : size.height * .6;
     return CarouselSlider(
       options: CarouselOptions(
         height: height,
@@ -103,7 +100,6 @@ class FullscreenSliderDemo extends StatelessWidget {
         enlargeCenterPage: false,
         autoPlay: true,
         autoPlayInterval: Duration(milliseconds: 5000),
-        // autoPlayAnimationDuration: Duration(milliseconds: 2000)
       ),
       items: imgList
           .map((item) => Container(

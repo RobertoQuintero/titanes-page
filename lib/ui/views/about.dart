@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -27,40 +28,86 @@ class AboutPage extends StatelessWidget {
     return CustomFullPage(
       child: _WidgetDescription(),
       imgUrl: imgUrl,
-      colorFirst: Color(0xff061B36),
-      colorSecond: Color(0xff0D3C75),
+      // colorFirst: Color(0xff061B36),
+      // colorSecond: Color(0xff0D3C75),
+      colorFirst: Color(0xffD45CF2),
+      colorSecond: Color(0xffDF61FF),
       pageTo: 0,
     );
   }
 }
 
 class _WidgetDescription extends StatelessWidget {
-  const _WidgetDescription({
-    Key? key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    double fontSize = 17;
+    if (size.width > 769 && size.width < 990) {
+      fontSize = 15;
+    }
+    final double margin = 4;
+    final color = size.width < 769 ? Colors.black : Colors.white;
+    final textStyle = TextStyle(
+        color: color,
+        fontFamily: 'Poppins',
+        fontWeight: size.width < 769 ? FontWeight.w300 : null,
+        fontSize: fontSize);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleLabel(text: 'Titanes'),
+        TitleLabel(
+          text: 'Titanes',
+        ),
         SizedBox(
-          height: 10,
+          height: 5,
+        ),
+        RichText(
+            text: TextSpan(style: textStyle, children: [
+          TextSpan(
+              style: textStyle,
+              text:
+                  'Bienvenido a la página oficial de Titanes Band, una propuesta musical que te robará el aliento y te dejará vibrando. Te invitamos a visitar la página de '),
+          _customSpan('Facebook', () => print('Facebook')),
+          TextSpan(
+              text:
+                  ' para que estes al dia con todas las presentaciones y noticias, y a suscribirte también al canal de youtube '),
+          _customSpan('Youtube', () => print('youtube')),
+          TextSpan(text: ' para que disfrutes de los videos que se estrenan!'),
+        ])),
+        SizedBox(
+          height: margin,
         ),
         Text(
-          'Quis aute irure laborum tempor laborum nisi nulla nulla nisi.',
-          style: TextStyle(color: Colors.white, fontFamily: 'Poppins'),
+          'Titanes Band es una agrupación originaria de Poza Rica Veracruz, con más de 5 años de trayectoria, se han abierto paso en el medio gracias a su juventud y frescura, asi como a la originalidad de sus talentosos integrantes, a su sobresaliente propuesta musical, a su gran energía e imagen.',
+          style: textStyle,
+        ),
+        SizedBox(
+          height: margin,
         ),
         Text(
-          'Ullamco enim eu nulla id sint ea pariatur ut nostrud amet esse officia non proident. Ad pariatur voluptate laborum ad ea deserunt velit esse. Exercitation anim est pariatur id elit velit elit duis cillum amet non ad deserunt cupidatat. Nisi quis quis fugiat sunt qui minim proident aliquip velit pariatur magna occaecat. Non do dolor laboris cupidatat non nostrud esse sint tempor et.',
-          style: TextStyle(color: Colors.white, fontFamily: 'Poppins'),
+          'Sus constantes actuaciones y su increible quimica con el público, han hecho que Titanes Band sea considerado uno de los mejores exponentes del género en la ciudad y en la región.',
+          style: textStyle,
+        ),
+        SizedBox(
+          height: margin,
         ),
         Text(
-          'Ullamco enim eu nulla id sint ea pariatur ut nostrud amet esse officia non proident. Ad pariatur voluptate laborum ad ea deserunt velit esse. Exercitation anim est pariatur id elit velit elit duis cillum amet non ad deserunt cupidatat. Nisi quis quis fugiat sunt qui minim proident aliquip velit pariatur magna occaecat. Non do dolor laboris cupidatat non nostrud esse sint tempor et.',
-          style: TextStyle(color: Colors.white, fontFamily: 'Poppins'),
+          'Formar parte de la experiencia con Titanes Band, deleitate con la versatilidad, baila hasta que el cuerpo aguante, canta con todas tus fuerzas al dolor y al amor y disfruta con la musica la alegría de la vida. ',
+          style: textStyle,
         ),
+        if (size.width < 450 || size.width < size.height)
+          SizedBox(
+            height: 100,
+          )
       ],
     );
+  }
+
+  TextSpan _customSpan(String title, Function onTap) {
+    final _gestureRecognizer = TapGestureRecognizer()..onTap = () => onTap;
+    return TextSpan(
+        text: title,
+        style: TextStyle(fontWeight: FontWeight.w300),
+        recognizer: _gestureRecognizer);
   }
 }

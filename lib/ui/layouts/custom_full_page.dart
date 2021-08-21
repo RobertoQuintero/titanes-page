@@ -33,7 +33,7 @@ class _CustomFullPageState extends State<CustomFullPage> {
   final double small = 450;
   final double medium = 769;
   final double large = 990;
-  final double extraLarge = 1100;
+  final double extraLarge = 1150;
 
   @override
   void initState() {
@@ -80,10 +80,10 @@ class _CustomFullPageState extends State<CustomFullPage> {
     final double top =
         size.width < medium ? 80 : (size.height / 2) - (imageWidth / 2);
     final double stickyLocation =
-        size.width < medium ? (size.width / 2) - (imageWidth / 2) : -10;
+        size.width < medium ? (size.width / 2) - (imageWidth / 2) : -100;
     final double roundedCorner = size.width < medium ? imageWidth : 0;
     final double cardHeight =
-        size.width < extraLarge ? imageWidth + 150 : imageWidth - 50;
+        size.width < extraLarge ? imageWidth + 170 : imageWidth - 20;
     return SingleChildScrollView(
       physics: BouncingScrollPhysics(),
       controller: _scrollController,
@@ -107,7 +107,7 @@ class _CustomFullPageState extends State<CustomFullPage> {
                             right: null,
                             left: size.width * .02,
                             child: SlideInRight(
-                              delay: Duration(milliseconds: 500),
+                              delay: Duration(milliseconds: 400),
                               child: CardGradient(
                                 colorFirst: widget.colorFirst,
                                 colorSecond: widget.colorSecond,
@@ -115,7 +115,7 @@ class _CustomFullPageState extends State<CustomFullPage> {
                                 height: cardHeight,
                                 maxWidth: size.width,
                                 left: 20,
-                                right: imageWidth + 45,
+                                right: imageWidth - 50,
                               ),
                             ),
                           )
@@ -124,15 +124,15 @@ class _CustomFullPageState extends State<CustomFullPage> {
                             right: size.width * .02,
                             left: null,
                             child: SlideInLeft(
-                              delay: Duration(milliseconds: 500),
+                              delay: Duration(milliseconds: 400),
                               child: CardGradient(
                                 colorFirst: widget.colorFirst,
                                 colorSecond: widget.colorSecond,
                                 child: widget.child,
                                 height: cardHeight,
                                 maxWidth: size.width,
-                                left: imageWidth + 45,
-                                right: 20,
+                                left: imageWidth - 50,
+                                right: 10,
                               ),
                             ),
                           ),

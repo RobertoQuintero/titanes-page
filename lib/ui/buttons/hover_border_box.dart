@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:js' as js;
 
 class HoverBorderBox extends StatefulWidget {
   final IconData? icon;
@@ -9,6 +11,7 @@ class HoverBorderBox extends StatefulWidget {
   final Duration duration;
   final Color color;
   final double fontSize;
+  final String url;
 
   const HoverBorderBox(
       {Key? key,
@@ -19,7 +22,8 @@ class HoverBorderBox extends StatefulWidget {
       required this.thickness,
       required this.duration,
       this.color = Colors.black,
-      this.fontSize = 17})
+      this.fontSize = 17,
+      required this.url})
       : super(key: key);
 
   @override
@@ -29,6 +33,7 @@ class HoverBorderBox extends StatefulWidget {
 class _HoverBorderBoxState extends State<HoverBorderBox> {
   double? topBottomLine;
   double? leftRightLine;
+  bool isHover = false;
 
   @override
   void initState() {
@@ -39,16 +44,18 @@ class _HoverBorderBoxState extends State<HoverBorderBox> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (val) {
-        topBottomLine = 0;
-        leftRightLine = widget.height;
-        setState(() {});
+    return InkWell(
+      onTap: () {
+        js.context.callMethod('open', [widget.url]);
       },
-      onExit: (val) {
-        topBottomLine = widget.width;
-        leftRightLine = 0;
+      onHover: (value) {
+        if (value) {
+          topBottomLine = 0;
+          leftRightLine = widget.height;
+        } else {
+          topBottomLine = widget.width;
+          leftRightLine = 0;
+        }
         setState(() {});
       },
       child: Padding(

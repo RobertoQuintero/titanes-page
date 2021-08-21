@@ -3,20 +3,27 @@ import 'package:flutter/material.dart';
 
 class TitleLabel extends StatelessWidget {
   final String text;
-  const TitleLabel({Key? key, required this.text}) : super(key: key);
+
+  const TitleLabel({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final color = size.width < 768 ? Colors.black : Colors.white;
     return FadeInDown(
-      delay: Duration(milliseconds: 800),
+      from: 50,
+      delay: Duration(milliseconds: 500),
       child: Text(
         text,
         style: TextStyle(
-            fontSize: size.width > 768 ? 50 : 30,
+            fontSize: size.width > 768 ? 40 : 30,
             fontFamily: 'MontserratAlternates',
             fontWeight: FontWeight.w700,
-            color: Colors.white),
+            color: color,
+            letterSpacing: .5),
       ),
     );
   }

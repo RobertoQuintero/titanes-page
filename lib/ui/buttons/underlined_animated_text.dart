@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:js' as js;
+
 class UnderlinedAnimatedText extends StatefulWidget {
   final String text;
   final Color color;
@@ -20,7 +23,10 @@ class _UnderlinedAnimatedTextState extends State<UnderlinedAnimatedText> {
       clipBehavior: Clip.none,
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () {
+            js.context
+                .callMethod('open', ['https://robertoquintero.vercel.app']);
+          },
           onHover: (value) => setState(() => _isHover = value),
           child: Text(
             widget.text,

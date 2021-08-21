@@ -20,10 +20,7 @@ class Logo extends StatelessWidget {
       child: ClipRRect(
         borderRadius: borderradius,
         child: InkWell(
-          onTap: () {
-            // Navigator.pushNamed(context, '/');
-            Navigator.pop(context);
-          },
+          onTap: () => Navigator.pop(context),
           child: Image.asset(
             '/images/logo.jpg',
             fit: BoxFit.cover,

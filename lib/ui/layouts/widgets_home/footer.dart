@@ -3,10 +3,19 @@ import 'package:titanes_page/ui/buttons/hover_border_box.dart';
 import 'package:titanes_page/ui/buttons/underlined_animated_text.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
-final List<IconData> icons = [
-  MaterialCommunityIcons.facebook,
-  MaterialCommunityIcons.youtube,
-  MaterialCommunityIcons.twitter,
+final List<Map<String, dynamic>> icons = [
+  {
+    'icon': MaterialCommunityIcons.facebook,
+    'url': 'https://www.facebook.com/titanesband'
+  },
+  {
+    'icon': MaterialCommunityIcons.youtube,
+    'url': 'https://www.youtube.com/channel/UC3l9QP_K2p0lMv4Dz1ocmwQ'
+  },
+  {
+    'icon': MaterialCommunityIcons.whatsapp,
+    'url': 'https://wa.me/5217825284208'
+  },
 ];
 
 class Footer extends StatelessWidget {
@@ -34,8 +43,6 @@ class Footer extends StatelessWidget {
                 Text(
                   'Developed by ',
                   style: TextStyle(color: Colors.white, fontFamily: 'Poppins'),
-                  // style: GoogleFonts.poppins(
-                  //     color: Colors.white, fontWeight: FontWeight.w500),
                 ),
                 UnderlinedAnimatedText(
                     text: 'Roberto Quintero', color: Color(0xffE6A805))
@@ -46,7 +53,8 @@ class Footer extends StatelessWidget {
               children: [
                 ...icons
                     .map((e) => HoverBorderBox(
-                        icon: e,
+                        url: e['url'],
+                        icon: e['icon'],
                         height: 40,
                         width: 40,
                         thickness: 2,
