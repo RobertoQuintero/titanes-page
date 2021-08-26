@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class FroastedCard extends StatelessWidget {
@@ -26,13 +25,13 @@ class FroastedCard extends StatelessWidget {
           height: height,
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
-            border: Border.all(width: .7, color: color.withOpacity(.5)),
+            border: Border.all(width: .6, color: color.withOpacity(.2)),
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  color.withOpacity(.7),
                   color.withOpacity(.5),
+                  color.withOpacity(.2),
                 ]),
             borderRadius: BorderRadius.circular(25),
           ),

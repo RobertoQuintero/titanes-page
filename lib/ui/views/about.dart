@@ -50,7 +50,8 @@ class _WidgetDescription extends StatelessWidget {
     final textStyle = TextStyle(
         color: color,
         fontFamily: 'Poppins',
-        fontWeight: size.width < 769 ? FontWeight.w300 : null,
+        // fontWeight: size.width < 769 ? FontWeight.w300 : null,
+        fontWeight: FontWeight.w300,
         fontSize: fontSize);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +96,7 @@ class _WidgetDescription extends StatelessWidget {
           'Formar parte de la experiencia con Titanes Band, deleitate con la versatilidad, baila hasta que el cuerpo aguante, canta con todas tus fuerzas al dolor y al amor y disfruta con la musica la alegría de la vida. ',
           style: textStyle,
         ),
-        if (size.width < 450 || size.width < size.height)
+        if (size.width < 450)
           SizedBox(
             height: 100,
           )

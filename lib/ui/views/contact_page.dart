@@ -49,6 +49,7 @@ class _WidgetDescription extends StatelessWidget {
     if (size.width < 290) return Container();
     return Flex(
       direction: Axis.horizontal,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,15 +117,15 @@ class _ImagesStack extends StatelessWidget {
                 ? 300
                 : 400;
     return Container(
-      width: size.width * .14,
+      width: size.width * .1,
       height: height,
-      color: Colors.transparent,
+      color: Colors.red,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           Positioned(
             top: -50,
-            left: 40,
+            right: 0,
             child: Transform.rotate(
               angle: -pi / 4,
               child: Image.asset(
@@ -134,24 +135,24 @@ class _ImagesStack extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: -100,
-            top: 20,
-            child: Transform.rotate(
-              angle: pi / 10,
-              child: Image.asset(
-                '/images/trumpet.png',
-                width: width - 30,
-              ),
-            ),
-          ),
-          Positioned(
-            left: 10,
-            bottom: -80,
+            right: -10,
+            top: 30,
             child: Transform.rotate(
               angle: pi / 12,
               child: Image.asset(
                 '/images/conga.png',
                 width: width + 20,
+              ),
+            ),
+          ),
+          Positioned(
+            right: 0,
+            bottom: -100,
+            child: Transform.rotate(
+              angle: pi / 10,
+              child: Image.asset(
+                '/images/trumpet.png',
+                width: width - 30,
               ),
             ),
           ),
@@ -185,9 +186,9 @@ class ContactItem extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-              fontSize: fontSize - 15,
+              fontSize: 16,
               color: color,
-              fontWeight: FontWeight.normal,
+              fontWeight: FontWeight.w300,
               fontFamily: 'Poppins'),
         )
       ],
