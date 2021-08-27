@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // ignore: avoid_web_libraries_in_flutter
-// import 'dart:js' as js;
+import 'dart:js' as js;
 
 class HoverBorderBox extends StatefulWidget {
   final IconData? icon;
@@ -46,7 +46,7 @@ class _HoverBorderBoxState extends State<HoverBorderBox> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // js.context.callMethod('open', [widget.url]);
+        js.context.callMethod('open', [widget.url]);
       },
       onHover: (value) {
         if (value) {

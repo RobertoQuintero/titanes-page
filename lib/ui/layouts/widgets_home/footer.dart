@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:titanes_page/ui/buttons/hover_border_box.dart';
 import 'package:titanes_page/ui/buttons/underlined_animated_text.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -40,10 +41,9 @@ class Footer extends StatelessWidget {
           children: [
             Wrap(
               children: [
-                Text(
-                  'Developed by ',
-                  style: TextStyle(color: Colors.white, fontFamily: 'Poppins'),
-                ),
+                Text('Developed by ',
+                    style:
+                        GoogleFonts.montserratAlternates(color: Colors.white)),
                 UnderlinedAnimatedText(
                     text: 'Roberto Quintero', color: Color(0xffE6A805))
               ],

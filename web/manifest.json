@@ -1,11 +1,11 @@
 {
-    "name": "Titanesnd",
+    "name": "Titanes Band",
     "short_name": "Titanes Band",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#1b1626",
-    "description": "A new Flutter project.",
+    "description": "Página oficial de Titanes band",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

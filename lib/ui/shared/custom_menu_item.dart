@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomMenuItem extends StatefulWidget {
   final String text;
@@ -34,8 +35,7 @@ class _CustomMenuItemState extends State<CustomMenuItem> {
             color: isHover ? Colors.white : Colors.transparent,
             child: Center(
               child: Text(widget.text,
-                  style: TextStyle(
-                      fontFamily: 'MontserratAlternates',
+                  style: GoogleFonts.montserratAlternates(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                       color: isHover ? Colors.black : Colors.white)),

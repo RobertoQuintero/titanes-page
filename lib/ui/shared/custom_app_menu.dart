@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:titanes_page/providers/page_privider.dart';
 import 'package:titanes_page/ui/shared/custom_menu_item.dart';
@@ -94,10 +95,8 @@ class _MenuTitle extends StatelessWidget {
             width: isOpen ? 45 : 0,
           ),
           Text('Menú',
-              style: TextStyle(
-                  fontFamily: 'MontserratAlternates',
-                  color: Colors.white,
-                  fontSize: 18)),
+              style: GoogleFonts.montserratAlternates(
+                  color: Colors.white, fontSize: 18)),
           Spacer(),
           AnimatedIcon(
               icon: AnimatedIcons.menu_close,

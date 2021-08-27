@@ -3,11 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:titanes_page/providers/page_privider.dart';
 import 'package:titanes_page/router/router.dart';
 import 'package:titanes_page/services/navigation_service.dart';
+import 'package:url_strategy/url_strategy.dart';
 // import 'package:titanes_page/services/navigation_service.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Flurorouter.configureRoutes();
+  setPathUrlStrategy();
   runApp(AppState());
 }
 
@@ -25,11 +27,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        color: Colors.deepPurple,
+        color: Colors.white,
         debugShowCheckedModeBanner: false,
-        title: 'Material App',
-        // home: GradientSquarePage(),
-        initialRoute: '/titanes',
+        title: 'Titanes Band',
+        initialRoute: '/',
         onGenerateRoute: Flurorouter.router.generator,
         navigatorKey: NavigationService.navigatorKey,
         theme:

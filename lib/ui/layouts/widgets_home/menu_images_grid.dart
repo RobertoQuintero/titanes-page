@@ -1,50 +1,51 @@
 import 'package:flutter/material.dart';
-
-// final List<Map<String, String>> images = [
-//   {
-//     'imgUrl':
-//         'https://res.cloudinary.com/dmq9e2wuv/image/upload/v1629305595/gbdxub9s8xzthl4irkka.jpg',
-//     'route': '/titanes'
-//   },
-//   {
-//     'imgUrl':
-//         'https://res.cloudinary.com/dmq9e2wuv/image/upload/v1629305595/saa5zkd1bbkdqbaxocyi.jpg',
-//     'route': '/integrantes'
-//   },
-//   {
-//     'imgUrl':
-//         'https://res.cloudinary.com/dmq9e2wuv/image/upload/v1629305595/rxjymntpniftyvailibt.jpg',
-//     'route': '/fotos'
-//   },
-//   {
-//     'imgUrl':
-//         'https://res.cloudinary.com/dmq9e2wuv/image/upload/v1629305429/xnes55muzhjvlimvjpah.jpg',
-//     'route': '/contacto'
-//   },
-// ];
+import 'package:google_fonts/google_fonts.dart';
 
 final List<Map<String, String>> images = [
   {
     'imgUrl':
-        'https://images.unsplash.com/photo-1523371683773-affcb4a2e39e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1402&q=80',
+        'https://res.cloudinary.com/dmq9e2wuv/image/upload/v1629305595/gbdxub9s8xzthl4irkka.jpg',
     'route': '/titanes'
   },
   {
     'imgUrl':
-        'https://images.unsplash.com/photo-1550614806-51d8db524675?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        'https://res.cloudinary.com/dmq9e2wuv/image/upload/v1629305595/saa5zkd1bbkdqbaxocyi.jpg',
     'route': '/integrantes'
   },
   {
     'imgUrl':
-        'https://images.unsplash.com/photo-1472393365320-db77a5abbecc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        'https://res.cloudinary.com/dmq9e2wuv/image/upload/v1629305595/rxjymntpniftyvailibt.jpg',
     'route': '/fotos'
   },
   {
     'imgUrl':
-        'https://images.unsplash.com/photo-1592169813474-dd0c8e52e3bf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        'https://res.cloudinary.com/dmq9e2wuv/image/upload/v1629305429/xnes55muzhjvlimvjpah.jpg',
     'route': '/contacto'
   },
 ];
+
+// final List<Map<String, String>> images = [
+//   {
+//     'imgUrl':
+//         'https://images.unsplash.com/photo-1523371683773-affcb4a2e39e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1402&q=80',
+//     'route': '/titanes'
+//   },
+//   {
+//     'imgUrl':
+//         'https://images.unsplash.com/photo-1550614806-51d8db524675?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+//     'route': '/integrantes'
+//   },
+//   {
+//     'imgUrl':
+//         'https://images.unsplash.com/photo-1472393365320-db77a5abbecc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+//     'route': '/fotos'
+//   },
+//   {
+//     'imgUrl':
+//         'https://images.unsplash.com/photo-1592169813474-dd0c8e52e3bf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+//     'route': '/contacto'
+//   },
+// ];
 
 class MenuImagesGrid extends StatelessWidget {
   const MenuImagesGrid({Key? key}) : super(key: key);
@@ -116,14 +117,11 @@ class _ImageItemState extends State<ImageItem> {
             height: height,
             color: _isHover ? Colors.black26 : Colors.black38,
             alignment: Alignment.center,
-            child: Text(
-              widget.route.substring(1),
-              style: TextStyle(
-                  fontFamily: 'MontserratAlternates',
-                  fontSize: 30,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
-            ),
+            child: Text(widget.route.substring(1),
+                style: GoogleFonts.montserratAlternates(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white)),
           )
         ],
       ),

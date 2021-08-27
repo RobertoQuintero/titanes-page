@@ -34,7 +34,7 @@ class _AnimatedFillButtonState extends State<AnimatedFillButton> {
             border: Border.all(width: 2, color: Colors.white)),
         child: Text(
           widget.text,
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.montserratAlternates(
               fontSize: 18,
               fontWeight: FontWeight.w600,
               color: _isHover ? Colors.black : Colors.white),

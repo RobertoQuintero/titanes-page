@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:titanes_page/providers/page_privider.dart';
 import 'package:titanes_page/ui/labels/title_label.dart';
@@ -23,15 +24,15 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String imgUrl =
-        'https://images.unsplash.com/photo-1523371683773-affcb4a2e39e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1402&q=80';
+        'https://res.cloudinary.com/dmq9e2wuv/image/upload/v1629305595/gbdxub9s8xzthl4irkka.jpg';
 
     return CustomFullPage(
       child: _WidgetDescription(),
       imgUrl: imgUrl,
       // colorFirst: Color(0xff061B36),
       // colorSecond: Color(0xff0D3C75),
-      colorFirst: Color(0xffD45CF2),
-      colorSecond: Color(0xffDF61FF),
+      colorFirst: Color(0xffff9aa2),
+      colorSecond: Color(0xffff9aa2).withOpacity(.8),
       pageTo: 0,
     );
   }
@@ -47,12 +48,9 @@ class _WidgetDescription extends StatelessWidget {
     }
     final double margin = 4;
     final color = size.width < 769 ? Colors.black : Colors.white;
-    final textStyle = TextStyle(
-        color: color,
-        fontFamily: 'Poppins',
-        // fontWeight: size.width < 769 ? FontWeight.w300 : null,
-        fontWeight: FontWeight.w300,
-        fontSize: fontSize);
+    final textStyle = GoogleFonts.montserratAlternates(
+        color: color, fontWeight: FontWeight.w300, fontSize: fontSize);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -65,7 +63,6 @@ class _WidgetDescription extends StatelessWidget {
         RichText(
             text: TextSpan(style: textStyle, children: [
           TextSpan(
-              style: textStyle,
               text:
                   'Bienvenido a la página oficial de Titanes Band, una propuesta musical que te robará el aliento y te dejará vibrando. Te invitamos a visitar la página de '),
           _customSpan('Facebook', () => print('Facebook')),

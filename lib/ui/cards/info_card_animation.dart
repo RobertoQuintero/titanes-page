@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InfoCardAnimation extends StatefulWidget {
   final String name;
   final String instrument;
   final String image;
+  final double width;
   const InfoCardAnimation(
       {Key? key,
       required this.name,
       required this.instrument,
-      required this.image})
+      required this.image,
+      this.width = 200})
       : super(key: key);
 
   @override
@@ -17,7 +20,7 @@ class InfoCardAnimation extends StatefulWidget {
 
 class _InfoCardAnimationState extends State<InfoCardAnimation> {
   bool isHover = false;
-  final double width = 250;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -28,9 +31,8 @@ class _InfoCardAnimationState extends State<InfoCardAnimation> {
       onHover: (value) => setState(() => isHover = value),
       child: AnimatedContainer(
         duration: Duration(milliseconds: 300),
-        width: width,
-        height: width,
-        margin: EdgeInsets.symmetric(horizontal: 20),
+        width: widget.width,
+        height: widget.width,
         decoration: BoxDecoration(
             color: isHover ? Colors.black : Colors.white,
             borderRadius: BorderRadius.circular(25),
@@ -47,16 +49,20 @@ class _InfoCardAnimationState extends State<InfoCardAnimation> {
                     duration: Duration(milliseconds: 200),
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 200),
-                      width: isHover ? width : width * .7,
-                      height: isHover ? width : width * .7,
-                      margin: EdgeInsets.only(top: isHover ? 0 : 15),
+                      width: isHover ? widget.width : widget.width * .6,
+                      height: isHover ? widget.width : widget.width * .6,
+                      margin: EdgeInsets.only(
+                          top: isHover
+                              ? 0
+                              : (widget.width / 2 - widget.width * .6 / 2) -
+                                  15),
                       decoration: BoxDecoration(
                           borderRadius:
-                              BorderRadius.circular(isHover ? 0 : width),
+                              BorderRadius.circular(isHover ? 0 : widget.width),
                           image: DecorationImage(
                               scale: 1.1,
                               fit: BoxFit.cover,
-                              image: AssetImage(widget.image))),
+                              image: NetworkImage(widget.image))),
                     ),
                   ),
                 ],
@@ -64,25 +70,19 @@ class _InfoCardAnimationState extends State<InfoCardAnimation> {
               Positioned(
                 bottom: 25,
                 left: 15,
-                child: Text(
-                  widget.name,
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: 'MontserratAlternates',
-                      fontWeight: FontWeight.bold,
-                      color: isHover ? Colors.white : Colors.black),
-                ),
+                child: Text(widget.name,
+                    style: GoogleFonts.montserratAlternates(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: isHover ? Colors.white : Colors.black)),
               ),
               Positioned(
                 bottom: 10,
                 left: 15,
-                child: Text(
-                  widget.instrument,
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'MontserratAlternates',
-                      color: isHover ? Colors.white : Colors.black),
-                ),
+                child: Text(widget.instrument,
+                    style: GoogleFonts.montserratAlternates(
+                        fontSize: 14,
+                        color: isHover ? Colors.white : Colors.black)),
               ),
             ],
           ),

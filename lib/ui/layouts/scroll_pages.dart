@@ -12,8 +12,8 @@ class ScrollPages extends StatelessWidget {
         body: Stack(
       children: [
         _ScrollPages(),
-        Positioned(top: 15, right: 10, child: CustomAppMenu()),
-        Positioned(top: 15, left: 15, child: Logo())
+        Positioned(top: 15, right: 10, child: SafeArea(child: CustomAppMenu())),
+        Positioned(top: 15, left: 15, child: SafeArea(child: Logo()))
       ],
     ));
   }

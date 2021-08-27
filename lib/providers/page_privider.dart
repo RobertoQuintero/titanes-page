@@ -18,7 +18,7 @@ class PageProvider extends ChangeNotifier {
       final index = (this.scrollController.page ?? 0).round();
       if (index != _currentIndex) {
         html.document.title = _pages[index];
-        html.window.history.replaceState(null, 'none', '#/${_pages[index]}');
+        html.window.history.replaceState(null, 'none', '/${_pages[index]}');
         _currentIndex = index;
       }
     });
